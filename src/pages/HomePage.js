@@ -3,23 +3,16 @@ import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 function HomePage() {
-  const auth = useAuth();
-  let navigate = useNavigate();
+  // const auth = useAuth();
+  // let navigate = useNavigate();
 
   // if (!auth.user) {
-  //   return <p>You are not logged in.</p>;
+  //   return <p></p>;
   // }
 
   return (
     <div>
-      <h1>Welcome {auth.user?.username}</h1>
-      <button
-        onClick={() => {
-          auth.logout(() => navigate("/"));
-        }}
-      >
-        Sign out
-      </button>
+      <h1>Đây mới là homepage - add list phim vào đây nha</h1>
     </div>
   );
 }

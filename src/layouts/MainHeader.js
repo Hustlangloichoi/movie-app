@@ -37,3 +37,13 @@ function MainHeader() {
 }
 
 export default MainHeader;
+
+{
+  /* cái nút này cần add vào heading bar<button
+        onClick={() => {
+          auth.logout(() => navigate("/"));
+        }}
+      >
+        Sign out
+      </button> */
+}

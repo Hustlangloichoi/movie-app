@@ -1,0 +1,5 @@
+prop: title, url
+login:
+filter: lay 1 list tu genres, r ms filter
+
+4 step: movie -> list (home page) + list co pagination --> movie detail --> search --> filter
