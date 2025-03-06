@@ -1,0 +1,24 @@
+prop: title, url
+login:
+filter: lay 1 list tu genres, r ms filter
+
+
+Step 1 (DONE)
+- list (home page)
+  + fecth Data from API
+  + render data
+
+
+
+Step 2 (DONE)
+- list co scroll
+
+
+
+Step 3
+- list movie detail
+
+
+
+Step 4
+- list search --> filter
