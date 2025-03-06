@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 function MovieCard({ movie }) {
   const navigate = useNavigate();
   return (
-    <Card onClick={() => navigate(`/popular/${movie.id}`)}>
+    <Card onClick={() => navigate(`/movie/${movie.id}`)}>
       <CardActionArea>
         <CardMedia
           component="img"

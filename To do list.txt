@@ -15,7 +15,7 @@ Step 2 (DONE)
 
 
 
-Step 3
+Step 3 (DONE)
 - list movie detail
 
 
