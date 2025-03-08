@@ -24,7 +24,7 @@ function DetailPage() {
   useEffect(() => {
     const getMovies = async () => {
       try {
-        const res = await apiService.get(`${params.id}`, {
+        const res = await apiService.get(`/movie/${params.id}`, {
           params: { language: "en-US" },
         });
         setMovie(res.data);

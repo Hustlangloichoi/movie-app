@@ -8,7 +8,13 @@ function MovieList({ movies, title }) {
       <Typography variant="h5" fontWeight="bold" mb={1}>
         {title}
       </Typography>
-      <Box sx={{ Height: "380px", overflowX: "auto", whiteSpace: "nowrap" }}>
+      <Box
+        sx={{
+          height: "480px",
+          overflowX: "auto",
+          whiteSpace: "nowrap",
+        }}
+      >
         <Stack direction="row" spacing={2}>
           {movies.map((movie, index) => (
             <Box key={movie.id} sx={{ flex: "0 0 auto" }}>
