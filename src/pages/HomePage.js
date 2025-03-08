@@ -32,7 +32,7 @@ function HomePage() {
 
   const { watch, reset } = methods;
   const filters = watch();
-  console.log(filters);
+
   const popFilter = applyFilter(popMovies, filters);
   const nowFilter = applyFilter(nowMovies, filters);
 
@@ -105,11 +105,12 @@ function HomePage() {
 export default HomePage;
 
 function applyFilter(movies, filters) {
+  console.log("Filters received:", filters.genres);
   let filteredMovies = movies;
 
   if (filters.genres.length > 0) {
-    filteredMovies = movies.filter((movie) =>
-      movie.genre_ids.every((id) => filters.genres.includes(id))
+    return movies.filter((movie) =>
+      filters.genres.every((id) => movie.genre_ids.includes(id))
     );
   }
 
