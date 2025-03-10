@@ -12,17 +12,13 @@ import LoadingScreen from "../components/LoadingScreen";
 import ProductSearch from "../components/ProductSearch";
 
 function HomePage() {
-  // const auth = useAuth();
-  // let navigate = useNavigate();
-
-  // if (!auth.user) {
-  //   return <p></p>;
-  // }
-
   const [popMovies, setPopMovies] = useState([]);
   const [nowMovies, setNowMovies] = useState([]);
+  const [comingMovies, setComingMovies] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
   const defaultValues = {
     genres: [],
     searchQuery: "",
@@ -34,9 +30,6 @@ function HomePage() {
 
   const { watch, reset } = methods;
   const filters = watch();
-
-  const popFilter = applyFilter(popMovies, filters);
-  const nowFilter = applyFilter(nowMovies, filters);
 
   useEffect(() => {
     const getMovies = async (category, setter) => {
@@ -51,38 +44,32 @@ function HomePage() {
       }
       setLoading(false);
     };
+
     getMovies("popular", setPopMovies);
     getMovies("now_playing", setNowMovies);
+    getMovies("upcoming", setComingMovies);
   }, []);
+
   return (
-    <Container
-      sx={{
-        display: "flex",
-        minHeight: "100vh",
-        mt: 3,
-      }}
-    >
-      <Stack sx={{ position: "sticky" }}>
-        <FormProvider methods={methods}>
-          <ProductSearch></ProductSearch>
-          <ProductFilter resetFilter={reset} />
-        </FormProvider>
-      </Stack>
+    <Container sx={{ display: "flex", minHeight: "100vh", mt: 3 }}>
       <Stack sx={{ overflow: "hidden" }}>
+        <FormProvider methods={methods}>
+          <ProductSearch onSearchResults={setSearchResults} />
+        </FormProvider>
         <Box sx={{ position: "relative", height: 1 }}>
           {loading ? (
             <LoadingScreen />
+          ) : error ? (
+            <Alert severity="error">{error}</Alert>
           ) : (
             <>
-              {error ? (
-                <Alert severity="error">{error}</Alert>
+              {searchResults.length > 0 ? (
+                <MovieList movies={searchResults} title="Search Results" />
               ) : (
                 <>
-                  <MovieList
-                    movies={popFilter}
-                    title="Popular Movies"
-                  ></MovieList>
-                  <MovieList movies={nowFilter} title="Trending"></MovieList>
+                  <MovieList movies={popMovies} title="Popular Movies" />
+                  <MovieList movies={nowMovies} title="Trending" />
+                  <MovieList movies={comingMovies} title="Upcoming" />
                 </>
               )}
             </>
@@ -99,7 +86,7 @@ function applyFilter(movies, filters) {
   console.log("Filters received:", filters.genres);
   let filteredMovies = movies;
 
-  if (filters.genres.length > 0) {
+  if (filters.genres && filters.genres.length > 0) {
     return movies.filter((movie) =>
       filters.genres.every((id) => movie.genre_ids.includes(id))
     );

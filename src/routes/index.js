@@ -7,6 +7,9 @@ import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import AuthRequire from "./AuthRequire";
+import PopPage from "../pages/PopPage";
+import TrendPage from "../pages/TrendPage";
+import ComingPage from "../pages/ComingPage";
 
 function Router() {
   return (
@@ -14,6 +17,9 @@ function Router() {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
         <Route path="movie/:id" element={<DetailPage />} />
+        <Route path="/popular" element={<PopPage />} />
+        <Route path="/trending" element={<TrendPage />} />
+        <Route path="/upcoming" element={<ComingPage />} />
       </Route>
 
       <Route element={<BlankLayout />}>

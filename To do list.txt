@@ -2,29 +2,36 @@ prop: title, url
 login:
 filter: lay 1 list tu genres, r ms filter
 
-
 Step 1 (DONE)
 - list (home page)
   + fecth Data from API
   + render data
 
-
-
 Step 2 (DONE)
 - list co scroll
 
-
-
 Step 3 (DONE)
 - list movie detail
-
 
 Step 4
 - filter(DONE)
 - search
 
-Them 1 list
-Search: dùng useDeferredValue (chỉ update khi có 1 khoảng dừng nhất định)định -- > lấy input --> useEffect fetch 
+Step 5: (DONE)
+- Them 1 list
+
+Step 6: (DONE)
+- Clear all function
+
+Step 7: (DONE)
+- thêm menu bar (tạo 3 pages của 3 lists, navigate về mỗi page)
+- add filter cho mỗi page
+
+Step 8: chỉnh sửa chức năng search (DONE)
+- Search: dùng useDeferredValue (chỉ update khi có 1 khoảng dừng nhất định)định -- > lấy input --> useEffect fetch 
+
+
+
 
 
 video: 8h30p Remix - framework - react và hơn thế nữa 
