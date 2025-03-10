@@ -19,6 +19,13 @@ Step 3 (DONE)
 - list movie detail
 
 
-
 Step 4
-- list search --> filter
+- filter(DONE)
+- search
+
+Them 1 list
+Search: dùng useDeferredValue (chỉ update khi có 1 khoảng dừng nhất định)định -- > lấy input --> useEffect fetch 
+
+
+video: 8h30p Remix - framework - react và hơn thế nữa 
+Client rendering and sever rendering??

@@ -9,6 +9,7 @@ import { Container, Stack, Box, Alert } from "@mui/material";
 import FormProvider from "../components/form/FormProvider";
 import ProductFilter from "../components/ProductFilter";
 import LoadingScreen from "../components/LoadingScreen";
+import ProductSearch from "../components/ProductSearch";
 
 function HomePage() {
   // const auth = useAuth();
@@ -24,6 +25,7 @@ function HomePage() {
   const [error, setError] = useState("");
   const defaultValues = {
     genres: [],
+    searchQuery: "",
   };
 
   const methods = useForm({
@@ -62,22 +64,11 @@ function HomePage() {
     >
       <Stack sx={{ position: "sticky" }}>
         <FormProvider methods={methods}>
+          <ProductSearch></ProductSearch>
           <ProductFilter resetFilter={reset} />
         </FormProvider>
       </Stack>
       <Stack sx={{ overflow: "hidden" }}>
-        {/* <FormProvider methods={methods}>
-            <Stack
-              spacing={2}
-              direction={{ xs: "column", sm: "row" }}
-              alignItems={{ sm: "center" }}
-              justifyContent="space-between"
-              mb={2}
-            >
-              <ProductSearch />
-              <ProductSort />
-            </Stack>
-          </FormProvider> */}
         <Box sx={{ position: "relative", height: 1 }}>
           {loading ? (
             <LoadingScreen />
@@ -111,6 +102,12 @@ function applyFilter(movies, filters) {
   if (filters.genres.length > 0) {
     return movies.filter((movie) =>
       filters.genres.every((id) => movie.genre_ids.includes(id))
+    );
+  }
+
+  if (filters.searchQuery) {
+    filteredMovies = movies.filter((movie) =>
+      movie.title.toLowerCase().includes(filters.searchQuery.toLowerCase())
     );
   }
 
